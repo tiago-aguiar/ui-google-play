@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicator="@drawable/tab_item_selector"
-        app:tabIndicatorHeight="4dp"
-        app:tabRippleColor="@null"
-        app:tabTextAppearance="@style/CustomTabTextAppearance"
-        app:tabSelectedTextColor="@color/colorAccent"
         app:tabIndicatorFullWidth="false"
-        app:tabMode="scrollable" />
+        app:tabIndicatorHeight="4dp"
+        app:tabMode="scrollable"
+        app:tabRippleColor="@null"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextAppearance="@style/CustomTabTextAppearance" />
 
     <View
         android:layout_width="match_parent"
@@ -28,6 +28,6 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/frag_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

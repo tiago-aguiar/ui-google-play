@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_for_apps_and_games"><![CDATA[Search for apps & games]]></string>
+    <string name="games">Games</string>
+    <string name="apps">Apps</string>
+    <string name="movies">Movies</string>
+    <string name="books">Books</string>
 </resources>

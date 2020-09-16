@@ -33,7 +33,8 @@ object ImageDownloader {
         val imageKey = url
 
         val bitmap: Bitmap? = getBitmapFromMemCache(imageKey)?.also {
-            imageView.setImageBitmap(it)
+            val roundedBitmap = getRoundedBitamp(imageView, it, cornerScale)
+            imageView.setImageDrawable(roundedBitmap)
         } ?: run {
             //imageView.setImageResource(R.drawable.image_placeholder)
 
@@ -46,13 +47,8 @@ object ImageDownloader {
                         val inputStream = conn.inputStream
                         val bitmap = BitmapFactory.decodeStream(inputStream)
 
-                        val dr: RoundedBitmapDrawable = RoundedBitmapDrawableFactory.create(
-                            imageView.resources,
-                            bitmap
-                        )
-                        dr.cornerRadius = (bitmap.width / cornerScale).toFloat()
-
-                        imageView.setImageDrawable(dr)
+                        val roundedBitmap = getRoundedBitamp(imageView, bitmap, cornerScale)
+                        imageView.setImageDrawable(roundedBitmap)
 
                         memoryCache.put(imageKey, bitmap)
                     } else {
@@ -66,6 +62,15 @@ object ImageDownloader {
             null
         }
 
+    }
+
+    private fun getRoundedBitamp(imageView: ImageView, bitmap: Bitmap, cornerScale: Int): RoundedBitmapDrawable {
+        val dr: RoundedBitmapDrawable = RoundedBitmapDrawableFactory.create(
+            imageView.resources,
+            bitmap
+        )
+        dr.cornerRadius = (bitmap.width / cornerScale).toFloat()
+        return dr
     }
 
     private fun getBitmapFromMemCache(imageKey: String): Bitmap? {

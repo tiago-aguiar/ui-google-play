@@ -37,7 +37,7 @@ class VerticalAdapter(private val categories: MutableList<Category> = mutableLis
                 this.txt_subtitle.text = category.title
                 this.rv_horizontal.layoutManager =
                     LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-                this.rv_horizontal.adapter = HorizontalAdapter(category.games)
+                this.rv_horizontal.adapter = HorizontalAdapter(category.games.shuffled())
             }
         }
     }
