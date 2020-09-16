@@ -13,9 +13,11 @@ class MainActivity : FragmentActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    supportFragmentManager.beginTransaction()
-      .add(R.id.container, MainFragment.newInstance("A", "B"))
-      .commitNow()
+    if (savedInstanceState == null) {
+      supportFragmentManager.beginTransaction()
+        .add(R.id.container, MainFragment.newInstance("A", "B"))
+        .commitNow()
+    }
   }
 
 }
