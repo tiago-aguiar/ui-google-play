@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
+import co.tiagoaguiar.clone.googleplay.model.GamesType
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
@@ -49,12 +46,8 @@ class MainFragment : Fragment() {
 
         view.frag_view_pager.adapter = CategoryAdapter(this)
 
-        for (i in 0 until view.tab_layout.tabCount) {
-
-        }
-
         TabLayoutMediator(view.tab_layout, view.frag_view_pager) { tab, position ->
-            tab.text = "OBJECT ${(position + 1)}"
+            tab.text = GamesType.values()[position].label
         }.attach()
     }
 
@@ -63,9 +56,9 @@ class MainFragment : Fragment() {
         override fun getItemCount(): Int = 6
 
         override fun createFragment(position: Int): Fragment {
-            val frag = DemoObjectFragment().apply {
+            val frag = ForYouFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_OBJECT, position + 1)
+                    putSerializable(ARG_OBJECT, GamesType.values()[position])
                 }
             }
 

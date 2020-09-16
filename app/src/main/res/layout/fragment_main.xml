@@ -15,6 +15,8 @@
         app:tabIndicator="@drawable/tab_item_selector"
         app:tabIndicatorHeight="4dp"
         app:tabRippleColor="@null"
+        app:tabTextAppearance="@style/CustomTabTextAppearance"
+        app:tabSelectedTextColor="@color/colorAccent"
         app:tabIndicatorFullWidth="false"
         app:tabMode="scrollable" />
 

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MainAdapter() : RecyclerView.Adapter<MainAdapter.MainHolder>() {
+class HorizontalAdapter() : RecyclerView.Adapter<HorizontalAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder =
         MainHolder(
@@ -16,10 +16,12 @@ class MainAdapter() : RecyclerView.Adapter<MainAdapter.MainHolder>() {
     override fun getItemCount(): Int = 15
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        println(position)
+        holder.bind()
     }
 
     inner class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind() {
+        }
     }
 
 }
