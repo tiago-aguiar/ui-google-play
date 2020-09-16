@@ -18,6 +18,7 @@ class MainActivity : FragmentActivity() {
         .add(R.id.container, MainFragment.newInstance("A", "B"))
         .commitNow()
     }
+
   }
 
 }

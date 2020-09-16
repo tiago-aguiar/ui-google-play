@@ -3,6 +3,7 @@ package co.tiagoaguiar.clone.googleplay
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -49,18 +50,29 @@ class MainFragment : Fragment() {
         TabLayoutMediator(view.tab_layout, view.frag_view_pager) { tab, position ->
             tab.text = GamesType.values()[position].label
         }.attach()
+
+        view.frag_view_pager.isUserInputEnabled = false
     }
 
     inner class CategoryAdapter(val fa: Fragment) : FragmentStateAdapter(fa) {
 
-        override fun getItemCount(): Int = 6
+        override fun getItemCount(): Int = GamesType.values().size
 
         override fun createFragment(position: Int): Fragment {
-            val frag = ForYouFragment().apply {
-                arguments = Bundle().apply {
-                    putSerializable(ARG_OBJECT, GamesType.values()[position])
+            val gamesType = GamesType.values()[position]
+            when(gamesType) {
+                GamesType.FOR_YOU -> {
+                    return ForYouFragment().apply {
+                        arguments = Bundle().apply {
+                            putSerializable(ARG_OBJECT, GamesType.values()[position])
+                        }
+                    }
+                }
+                else -> {
+                    return Fragment()
                 }
             }
+
 
 //            val tab: TabLayout.Tab? = fa.tab_layout.getTabAt(position)
 //            val relativeLayout = LayoutInflater.from(requireContext())
@@ -70,7 +82,6 @@ class MainFragment : Fragment() {
 //            tabTextView.text = tab?.text
 //            tab?.customView = relativeLayout
 //            tab?.select()
-            return frag
         }
     }
 

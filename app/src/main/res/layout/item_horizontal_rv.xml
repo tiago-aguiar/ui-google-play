@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="wrap_content">
 
     <TextView
-        android:text="@string/app_name"
-        android:paddingHorizontal="16dp"
-        android:layout_marginTop="32dp"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
+        android:id="@+id/txt_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_toStartOf="@id/icon_arrow"
+        android:paddingHorizontal="16dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:text="Discover your next favorite game"
-        android:paddingHorizontal="16dp"
-        android:layout_marginBottom="32dp"
-        android:textSize="16sp"
+        android:id="@+id/txt_subtitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        android:layout_marginBottom="32dp"
+        android:layout_toStartOf="@id/icon_arrow"
+        android:paddingHorizontal="16dp"
+        android:text="Discover your next favorite game"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/icon_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txt_title"
+        android:layout_alignBottom="@+id/txt_subtitle"
+        android:layout_alignParentEnd="true"
+        android:paddingHorizontal="16dp"
+        android:src="@drawable/ic_baseline_arrow_forward_24" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_horizontal"
-        android:paddingHorizontal="8dp"
         android:layout_width="match_parent"
-        android:clipToPadding="false"
         android:layout_height="wrap_content"
+        android:layout_below="@id/txt_subtitle"
+        android:clipToPadding="false"
+        android:paddingHorizontal="8dp"
         android:paddingBottom="8dp"
         tools:listitem="@layout/item_game" />
 
-</LinearLayout>
+</RelativeLayout>

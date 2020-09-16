@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.tiagoaguiar.clone.googleplay.model.Category
 import kotlinx.android.synthetic.main.item_horizontal_rv.view.*
 
-class VerticalAdapter() : RecyclerView.Adapter<VerticalAdapter.MainHolder>() {
+
+class VerticalAdapter(private val categories: MutableList<Category> = mutableListOf()) :
+    RecyclerView.Adapter<VerticalAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder =
         MainHolder(
@@ -15,18 +18,26 @@ class VerticalAdapter() : RecyclerView.Adapter<VerticalAdapter.MainHolder>() {
                 .inflate(R.layout.item_horizontal_rv, parent, false)
         )
 
-    override fun getItemCount(): Int = 8
+    override fun getItemCount(): Int = categories.size
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-       holder.bind()
+        holder.bind(categories[position])
     }
 
-    inner class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind() {
+    fun add(categories: List<Category>) {
+        this.categories.clear()
+        this.categories.addAll(categories)
+        notifyDataSetChanged()
+    }
+
+    class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(category: Category) {
             with(itemView) {
+                this.txt_title.text = category.title
+                this.txt_subtitle.text = category.title
                 this.rv_horizontal.layoutManager =
                     LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-                this.rv_horizontal.adapter = HorizontalAdapter()
+                this.rv_horizontal.adapter = HorizontalAdapter(category.games)
             }
         }
     }
