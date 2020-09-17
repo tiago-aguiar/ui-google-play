@@ -1,11 +1,8 @@
-package co.tiagoaguiar.clone.googleplay
+package co.tiagoaguiar.clone.googleplay.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import co.tiagoaguiar.clone.googleplay.R
 
 class MainActivity : FragmentActivity() {
 
@@ -15,10 +12,9 @@ class MainActivity : FragmentActivity() {
 
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
-        .add(R.id.container, MainFragment.newInstance("A", "B"))
+        .add(R.id.container, MainFragment())
         .commitNow()
     }
-
   }
 
 }

@@ -1,21 +1,22 @@
-package co.tiagoaguiar.clone.googleplay
+package co.tiagoaguiar.clone.googleplay.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.tiagoaguiar.clone.googleplay.R
 import co.tiagoaguiar.clone.googleplay.model.Category
-import kotlinx.android.synthetic.main.item_horizontal_rv.view.*
+import kotlinx.android.synthetic.main.item_game_for_you.view.*
 
 
-class VerticalAdapter(private val categories: MutableList<Category> = mutableListOf()) :
-    RecyclerView.Adapter<VerticalAdapter.MainHolder>() {
+class ForYouVerticalAdapter(private val categories: MutableList<Category> = mutableListOf()) :
+    RecyclerView.Adapter<ForYouVerticalAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder =
         MainHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_horizontal_rv, parent, false)
+                .inflate(R.layout.item_game_for_you, parent, false)
         )
 
     override fun getItemCount(): Int = categories.size
@@ -37,7 +38,7 @@ class VerticalAdapter(private val categories: MutableList<Category> = mutableLis
                 this.txt_subtitle.text = category.title
                 this.rv_horizontal.layoutManager =
                     LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-                this.rv_horizontal.adapter = HorizontalAdapter(category.games.shuffled())
+                this.rv_horizontal.adapter = ForYouHorizontalAdapter(category.games.shuffled())
             }
         }
     }

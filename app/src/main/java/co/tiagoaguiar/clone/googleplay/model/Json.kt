@@ -1186,6 +1186,8 @@ const val topGrossing = """{
       ]
 }"""
 
+fun topCharts() = topGrossing
+
 fun feed() = """
     {
         "categories" : [

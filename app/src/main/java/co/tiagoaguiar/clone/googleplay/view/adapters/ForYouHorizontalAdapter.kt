@@ -1,15 +1,16 @@
-package co.tiagoaguiar.clone.googleplay
+package co.tiagoaguiar.clone.googleplay.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import co.tiagoaguiar.clone.googleplay.R
 import co.tiagoaguiar.clone.googleplay.model.Game
 import co.tiagoaguiar.clone.googleplay.util.ImageDownloader
 import kotlinx.android.synthetic.main.item_game.view.*
 
 
-class HorizontalAdapter(private val games: List<Game>) : RecyclerView.Adapter<HorizontalAdapter.MainHolder>() {
+class ForYouHorizontalAdapter(private val games: List<Game>) : RecyclerView.Adapter<ForYouHorizontalAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder =
         MainHolder(
@@ -23,7 +24,7 @@ class HorizontalAdapter(private val games: List<Game>) : RecyclerView.Adapter<Ho
         holder.bind(games[position])
     }
 
-    inner class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(game: Game) {
             ImageDownloader.download(itemView.item_icon, game.icon, 4)
 
